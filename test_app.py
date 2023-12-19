@@ -280,7 +280,7 @@ graph.edge('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €',
 graph.edge('Zdravotné poistenie\n'+str(format(round(v_vz_zp*0.04,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €')
 graph.edge('Sociálne poistenie\n'+str(format(round(v_vz_sp*0.094,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €')
 if v_pn == True:
-    graph.node('Náhrada príjmu za\n práceneschopnosť\n'+str(format(round(v_sum_pn,2),".2f"))+' €', shape="box", style="filled", color="mediumseagreen")
+    graph.node('Náhrada príjmu za\n práceneschopnosť\n'+str(format(round(v_sum_pn,2),".2f"))+' €', shape="box", style="filled", color="steelblue")
     graph.edge('Náhrada príjmu za\n práceneschopnosť\n'+str(format(round(v_sum_pn,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €')
 
 st.graphviz_chart(graph)
