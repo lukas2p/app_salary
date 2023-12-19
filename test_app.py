@@ -14,10 +14,6 @@ st.sidebar.subheader("Základné parametre")
 d_sviatky = pd.read_excel("./sviatky.xlsx", index_col = None)
 d_sviatky['DATUM1'] = d_sviatky['DATUM'].dt.date
 
-v_rep_width = 10
-v_rep_height = 1
-d_cell_metadata = pd_cell_metadata.to_dict()
-d_cell_metadata_update = dict()
 v_pn_prvy_den = datetime.date(2099, 12, 31)
 v_pn_posl_den = datetime.date(2099, 12, 31)
 v_prisp_zl=0
