@@ -232,6 +232,7 @@ st.subheader("Podrobný rozpis")
 # GRAF
 #####################
 graph = graphviz.Digraph()
+graph.node('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', shape='egg')
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
 
