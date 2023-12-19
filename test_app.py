@@ -16,7 +16,6 @@ d_sviatky['DATUM1'] = d_sviatky['DATUM'].dt.date
 
 v_rep_width = 10
 v_rep_height = 1
-pd_cell_metadata = pd.read_json("./test_app.json")
 d_cell_metadata = pd_cell_metadata.to_dict()
 d_cell_metadata_update = dict()
 v_pn_prvy_den = datetime.date(2099, 12, 31)
