@@ -232,10 +232,12 @@ st.subheader("Podrobný rozpis")
 # GRAF
 #####################
 graph = graphviz.Digraph()
-graph.node('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', shape='box')
-graph.node('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
-graph.node('Sociálne poistenie\n'+str(format(round(v_vz_sp*0.094,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
-graph.node('Zdravotné poistenie\n'+str(format(round(v_vz_zp*0.04,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
+graph.node('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', shape="box", style="filled", color="lightblue")
+graph.node('Náhrada za sviatok\n'+str(format(round(v_sum_sviatky,2),".2f"))+' €', shape="box", style="filled", color="lightblue")
+graph.node('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', shape="box", style="filled", color="steelblue")
+graph.node('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', shape="box", style="filled", color="salmon")
+graph.node('Sociálne poistenie\n'+str(format(round(v_vz_sp*0.094,2),".2f"))+' €', shape="box", style="filled", color="salmon")
+graph.node('Zdravotné poistenie\n'+str(format(round(v_vz_zp*0.04,2),".2f"))+' €', shape="box", style="filled", color="salmon")
 
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
@@ -244,9 +246,11 @@ graph.edge('Náhrada za sviatok\n'+str(format(round(v_sum_sviatky,2),".2f"))+' �
 graph.edge('Náhrada za sviatok\n'+str(format(round(v_sum_sviatky,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
 
 if v_dov == True:
+    graph.node('Náhrada za dovolenku\n'+str(format(round(v_sum_dov,2),".2f"))+' €', shape="box", style="filled", color="lightblue")
     graph.edge('Náhrada za dovolenku\n'+str(format(round(v_sum_dov,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
     graph.edge('Náhrada za dovolenku\n'+str(format(round(v_sum_dov,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
 if v_ostatne > 0:
+    graph.node('Ostatné príjmy\n'+str(format(round(v_ostatne,2),".2f"))+' €', shape="box", style="filled", color="lightblue")
     graph.edge('Ostatné príjmy\n'+str(format(round(v_ostatne,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
     graph.edge('Ostatné príjmy\n'+str(format(round(v_ostatne,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
 
@@ -268,7 +272,7 @@ graph.edge('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', 'Čis
 
 if v_zaklad_dane > 3499.19:
     graph.edge('Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', 'Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', label="25%")
-    graph.node('Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
+    graph.node('Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', shape="box", style="filled", color="salmon")
     graph.edge('Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €', label="-")
 
 graph.edge('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €')
