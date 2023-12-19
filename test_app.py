@@ -233,6 +233,9 @@ st.subheader("Podrobný rozpis")
 #####################
 graph = graphviz.Digraph()
 graph.node('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', shape='box')
+graph.node('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
+graph.node('Sociálne poistenie\n'+str(format(round(v_vz_sp*0.094,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
+graph.node('Zdravotné poistenie\n'+str(format(round(v_vz_zp*0.04,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
 
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
@@ -265,6 +268,7 @@ graph.edge('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', 'Čis
 
 if v_zaklad_dane > 3499.19:
     graph.edge('Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', 'Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', label="25%")
+    graph.node('Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', shape="box", style="filled", color="mistyrose")
     graph.edge('Progresívna daň\n'+str(format(round(v_dan_25,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €', label="-")
 
 graph.edge('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', 'Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €')
