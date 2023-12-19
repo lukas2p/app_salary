@@ -37,8 +37,8 @@ with st.sidebar.expander("PNka"):
     v_pn = st.sidebar.toggle("Bol som práceneschopný", False, key="1pn")
     if v_pn == True:
         sb2c1, sb2c2 = st.sidebar.columns(2)
-        v_pn_prvy_den = sb2c1.date_input("Prvý deň PN", value=datetime.date(v_rok, v_mesiac-1, 1))
-        v_pn_posl_den = sb2c2.date_input("Posledný deň PN", value=datetime.date(v_rok, v_mesiac-1, 1))
+        v_pn_prvy_den = sb2c1.date_input("Prvý deň PN", value=datetime.date(v_rok, 1, 1))
+        v_pn_posl_den = sb2c2.date_input("Posledný deň PN", value=datetime.date(v_rok, 1, 1))
         v_vz_minuly_rok = st.sidebar.number_input("Vymeriavací základ za predch. rok", min_value = 0.00, value = float(v_zmluvna_mzda*12))
         st.sidebar.write("Koeficienty náhrady príjmu od zamestnávateľa")
         sb3c1, sb3c2, sb3c3 = st.sidebar.columns(3)
