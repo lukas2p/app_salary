@@ -238,6 +238,7 @@ graph.node('Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €',
 graph.node('Daň z príjmu\n'+str(format(round(v_dan_19,2),".2f"))+' €', shape="box", style="filled", color="salmon")
 graph.node('Sociálne poistenie\n'+str(format(round(v_vz_sp*0.094,2),".2f"))+' €', shape="box", style="filled", color="salmon")
 graph.node('Zdravotné poistenie\n'+str(format(round(v_vz_zp*0.04,2),".2f"))+' €', shape="box", style="filled", color="salmon")
+graph.node('Čistý príjem\n'+str(format(round(v_cista_mzda,2),".2f"))+' €', shape="box", style="filled", color="mediumseagreen")
 
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Hrubý príjem\n'+str(format(round(v_hruby_prijem,2),".2f"))+' €', label="+")
 graph.edge('Hrubý príjem za\n odpracované dni\n'+str(format(round(v_sum_mzda,2),".2f"))+' €', 'Základ dane\n'+str(format(round(v_zaklad_dane,2),".2f"))+' €', label="+")
