@@ -23,23 +23,23 @@ v_prisp_zc=0
 sb1c1, sb1c2 = st.sidebar.columns(2)
 v_rok = sb1c1.selectbox('Rok: ', [2023, 2024])
 v_mesiac = sb1c2.selectbox('Mesiac: ', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
-v_zmluvna_mzda = st.sidebar.number_input("Zmluvná mzda", min_value = 0, value = 3050, key="zmluvna_mzda")
-v_priemerka = st.sidebar.number_input("Priemerná hodinová mzda", min_value = 0.0000, value = 24.2642, key="priemerna_hodinova_mzda")
-v_denny_fond_hodin = st.sidebar.number_input("Denný fond hodín", min_value = 0.00, value = 7.70, key="denny_fond_hodin")
-v_ostatne = st.sidebar.number_input("Ostatné príjmy", min_value = 0, value = 245)
+v_zmluvna_mzda = st.sidebar.number_input("Zmluvná mzda", min_value = 0, value = 1500, key="zmluvna_mzda")
+v_priemerka = st.sidebar.number_input("Priemerná hodinová mzda", min_value = 0.0000, value = v_zmluvna_mzda/168, key="priemerna_hodinova_mzda")
+v_denny_fond_hodin = st.sidebar.number_input("Denný fond hodín", min_value = 0.00, value = 8.00, key="denny_fond_hodin")
+v_ostatne = st.sidebar.number_input("Ostatné príjmy", min_value = 0, value = 0)
 with st.sidebar.expander("Prispievam na DDS"):
     v_dds = st.sidebar.toggle("Prispievam na DDS", False, key = "3dss")
     if v_dds == True:
-        v_prisp_zl = st.sidebar.number_input("Príspevok zamestnávateľa na DDS", min_value = 0, value = 100, key="dss_zamestnavatel", placeholder="Vyplňte koeficient")
-        v_prisp_zc = st.sidebar.number_input("Príspevok zamestnanca na DDS", min_value = 0, value = 50, key="dss_zamestnanec", placeholder="Vyplňte koeficient")
+        v_prisp_zl = st.sidebar.number_input("Príspevok zamestnávateľa na DDS", min_value = 0, value = 0, key="dss_zamestnavatel", placeholder="Vyplňte koeficient")
+        v_prisp_zc = st.sidebar.number_input("Príspevok zamestnanca na DDS", min_value = 0, value = 0, key="dss_zamestnanec", placeholder="Vyplňte koeficient")
 
 with st.sidebar.expander("PNka"):
     v_pn = st.sidebar.toggle("Bol som práceneschopný", False, key="1pn")
     if v_pn == True:
         sb2c1, sb2c2 = st.sidebar.columns(2)
-        v_pn_prvy_den = sb2c1.date_input("Prvý deň PN", datetime.date(2023, 12, 4))
-        v_pn_posl_den = sb2c2.date_input("Posledný deň PN", datetime.date(2023, 12, 14))
-        v_vz_minuly_rok = st.sidebar.number_input("Vymeriavací základ za predch. rok", min_value = 0.00, value = 41954.84)
+        v_pn_prvy_den = sb2c1.date_input("Prvý deň PN", value=datetime.date(v_rok, v_mesiac-1, 1))
+        v_pn_posl_den = sb2c2.date_input("Posledný deň PN", value=datetime.date(v_rok, v_mesiac-1, 1))
+        v_vz_minuly_rok = st.sidebar.number_input("Vymeriavací základ za predch. rok", min_value = 0.00, value = v_zmluvna_mzda*12)
         st.sidebar.write("Koeficienty náhrady príjmu od zamestnávateľa")
         sb3c1, sb3c2, sb3c3 = st.sidebar.columns(3)
         v_pn_prisp3 = (sb3c2.number_input("Dni 1-3", min_value = 25, value = 25))/100
